@@ -42,6 +42,7 @@ public class AutoUpdateService extends Service {
         PendingIntent pi = PendingIntent.getService(this,0,i,0);
         manager.cancel(pi);
         manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,triggerAtTime,pi);
+        Log.e("天气已经更新","yes");
         return super.onStartCommand(intent ,flags,startId);
     }
 
@@ -90,7 +91,7 @@ public class AutoUpdateService extends Service {
                     if (weather != null && "ok".equals(weather.status)){
                         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
                         editor.apply();
-                        Log.e("天气已经更新","yes");
+
                     }
                 }
 
